@@ -1,1 +1,662 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>La fusion | Servicios Digitales</title>
+  <meta
+    name="description"
+    content="La fusion brinda atención, soporte y soluciones digitales para usuarios, comunidades online y servicios digitales."
+  />
+
+  <style>
+    :root {
+      --bg: #101828;
+      --bg-soft: #182230;
+      --card: #ffffff;
+      --text: #101828;
+      --muted: #667085;
+      --primary: #7c3aed;
+      --primary-dark: #6d28d9;
+      --accent: #22c55e;
+      --line: #e4e7ec;
+      --light: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #7c3aed, #101828);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(124, 58, 237, 0.35), transparent 34%),
+        radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.16), transparent 28%),
+        linear-gradient(135deg, #101828, #182230);
+      color: #ffffff;
+      padding: 86px 20px 78px;
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #ede9fe;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+    }
+
+    .hero p {
+      margin: 22px 0 0;
+      max-width: 620px;
+      color: #d0d5dd;
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 13px;
+      font-weight: 700;
+      font-size: 15px;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #101828;
+    }
+
+    .btn-primary:hover {
+      background: #f2f4f7;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      color: #ffffff;
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.14);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card h2 {
+      margin: 0 0 18px;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .info-item {
+      padding: 14px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .info-label {
+      font-size: 13px;
+      color: #98a2b3;
+      margin-bottom: 4px;
+    }
+
+    .info-value {
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    .section {
+      padding: 72px 20px;
+    }
+
+    .section-white {
+      background: #ffffff;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.1;
+      letter-spacing: -0.045em;
+    }
+
+    .section-title p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 14px 38px rgba(16, 24, 40, 0.06);
+    }
+
+    .section-white .card {
+      background: #f8fafc;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+      background: #f3e8ff;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.025em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .contact-panel {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      box-shadow: 0 22px 60px rgba(16, 24, 40, 0.08);
+    }
+
+    .contact-box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .contact-box strong {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .contact-box span,
+    .contact-box a {
+      font-size: 18px;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    .whatsapp-button {
+      margin-top: 22px;
+      width: 100%;
+      background: #16a34a;
+      color: #ffffff !important;
+      min-height: 54px;
+      border-radius: 14px;
+      font-size: 16px;
+    }
+
+    .whatsapp-button:hover {
+      background: #15803d;
+      transform: translateY(-1px);
+    }
+
+    .notice {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: #f3e8ff;
+      border: 1px solid #ddd6fe;
+      color: #4c1d95;
+      font-size: 15px;
+    }
+
+    .footer {
+      background: #101828;
+      color: #98a2b3;
+      padding: 30px 20px;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer strong {
+      color: #ffffff;
+    }
+
+    @media (max-width: 860px) {
+      .hero-inner,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 64px;
+      }
+
+      .section {
+        padding: 56px 18px;
+      }
+
+      .contact-panel {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a href="#" class="brand" aria-label="La fusion">
+        <span class="brand-icon">L</span>
+        <span>La fusion</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#atencion">Atención</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Servicios digitales · Córdoba, Argentina
+          </div>
+
+          <h1>Soluciones digitales para una atención más simple.</h1>
+
+          <p>
+            En La fusion brindamos asistencia, gestión y soporte para usuarios,
+            comunidades online y servicios digitales. Trabajamos con canales de
+            comunicación claros, rápidos y organizados.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contacto">Ver datos de contacto</a>
+            <a class="btn btn-secondary" href="#servicios">Conocer servicios</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Información de la empresa">
+          <h2>Información de la empresa</h2>
+
+          <div class="info-list">
+            <div class="info-item">
+              <div class="info-label">Nombre comercial</div>
+              <div class="info-value">La fusion</div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-label">Categoría</div>
+              <div class="info-value">Servicios digitales</div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-label">Ubicación</div>
+              <div class="info-value">Córdoba, Argentina</div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-label">Canal de atención</div>
+              <div class="info-value">WhatsApp y soporte online</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="servicios" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Servicios</h2>
+          <p>
+            Ofrecemos soluciones orientadas a mejorar la comunicación, el soporte
+            y la gestión de usuarios en entornos digitales.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">01</div>
+            <h3>Atención digital</h3>
+            <p>
+              Canal de contacto para recibir consultas, solicitudes y mensajes de
+              usuarios de manera simple y ordenada.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">02</div>
+            <h3>Soporte a usuarios</h3>
+            <p>
+              Asistencia inicial, orientación y seguimiento de consultas vinculadas
+              a servicios digitales.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">03</div>
+            <h3>Gestión de comunidades</h3>
+            <p>
+              Herramientas y procesos para mantener una comunicación clara con
+              comunidades, clientes y usuarios online.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">04</div>
+            <h3>Comunicación online</h3>
+            <p>
+              Organización de mensajes, respuestas y derivaciones para mejorar la
+              experiencia de contacto.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">05</div>
+            <h3>Canales oficiales</h3>
+            <p>
+              Centralización de la atención mediante canales digitales confiables
+              y fáciles de usar.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">06</div>
+            <h3>Asistencia personalizada</h3>
+            <p>
+              Atención individual para cada consulta, con respuestas claras y
+              acompañamiento según la necesidad del usuario.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="atencion" class="section section-white">
+      <div class="container">
+        <div class="section-title">
+          <h2>Atención y soporte</h2>
+          <p>
+            Nuestro objetivo es facilitar la comunicación entre usuarios y servicios
+            digitales, manteniendo una experiencia clara y directa.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">✓</div>
+            <h3>Consultas generales</h3>
+            <p>
+              Recibimos mensajes relacionados con información, orientación y
+              solicitudes generales.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">✓</div>
+            <h3>Respuesta ordenada</h3>
+            <p>
+              Trabajamos con procesos simples para responder consultas y derivar
+              cada solicitud correctamente.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">✓</div>
+            <h3>Seguimiento digital</h3>
+            <p>
+              Mantenemos una comunicación clara para que cada usuario pueda recibir
+              asistencia por canales oficiales.
+            </p>
+          </article>
+        </div>
+
+        <div class="notice">
+          La fusion utiliza canales digitales para ordenar la comunicación, responder
+          consultas y mejorar la experiencia de atención online.
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contacto</h2>
+          <p>
+            Estos son los datos principales de contacto y presencia digital de La fusion.
+          </p>
+        </div>
+
+        <div class="contact-panel">
+          <div>
+            <div class="contact-box">
+              <strong>Empresa</strong>
+              <span>La fusion</span>
+            </div>
+
+            <br />
+
+            <div class="contact-box">
+              <strong>Ubicación</strong>
+              <span>Córdoba, Argentina</span>
+            </div>
+
+            <br />
+
+            <div class="contact-box">
+              <strong>Email</strong>
+              <a href="mailto:contacto@lafusion.com.ar">
+                contacto@lafusion.com.ar
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <div class="contact-box">
+              <strong>Atención por WhatsApp</strong>
+              <span>Canal oficial de consultas</span>
+
+              <!-- Reemplazar este número por el real en formato internacional, sin +, espacios ni guiones -->
+              <a
+                class="btn whatsapp-button"
+                href="https://wa.me/5492925244713?text=Hola%2C%20quiero%20hacer%20una%20consulta%20sobre%20La%20fusion"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contactar por WhatsApp
+              </a>
+            </div>
+
+            <br />
+
+            <div class="contact-box">
+              <strong>Horario de atención</strong>
+              <span>Atención online todos los días</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>La fusion</strong> · Servicios digitales
+      </div>
+      <div>
+        Córdoba, Argentina · contacto@lafusion.com.ar
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
